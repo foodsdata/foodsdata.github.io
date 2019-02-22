@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 氧气计算</title>
+    <title>Categories on Beautiful Hugo</title>
     <link>https://foodsdata.github.io/categories/</link>
-    <description>Recent content in Categories on 氧气计算</description>
+    <description>Recent content in Categories on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
+    <webMaster>youremail@domain.com (Some Person)</webMaster>
     
 	<atom:link href="https://foodsdata.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>思考感悟</title>
+      <link>https://foodsdata.github.io/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
+      <pubDate>Sat, 20 Feb 2016 15:34:05 +0800</pubDate>
+      <author>youremail@domain.com (Some Person)</author>
+      <guid>https://foodsdata.github.io/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
