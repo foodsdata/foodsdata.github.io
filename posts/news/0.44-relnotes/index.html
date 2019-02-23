@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Hugo 0.44: Friday the 13th Edition - Hugo Ivy</title>
+    <meta property="og:title" content="Hugo 0.44: Friday the 13th Edition - Hugo Ivy">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="A sequel to the very popular Hugo Pipes Edition; bug-fixes and enhancements …">
+      <meta property="og:description" content="A sequel to the very popular Hugo Pipes Edition; bug-fixes and enhancements …">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Hugo Ivy</a></h1>
+
+<p class="tagline">A Hugo theme ported from the static site generator Ivy.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">Home</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  <li><a href="/categories/">Categories</a></li>
+  
+  <li><a href="/tags/">Tags</a></li>
+  
+  <li><a href="/index.xml">Subscribe</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Hugo 0.44: Friday the 13th Edition</h1>
+
+<h3>
+  2018-07-13</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>Hugo <code>0.44</code> is the follow-up release, or <strong>The Sequel</strong>, of the very well received <code>0.43</code> only days ago. That release added <strong>Hugo Pipes</strong>, with SCSS/SASS support, assets bundling and minification, ad-hoc image processing and much more.</p>
+
+<p>This is mostly a bug-fix release, but it also includes several important improvements.</p>
+
+<p>Many complained that their SVG images vanished when browsed from the <code>hugo server</code>. With <strong>Hugo Pipes</strong> MIME types suddenly got really important, but Hugo&rsquo;s use of <code>Suffix</code> was ambiguous. This became visible when we redefined the <code>image/svg+xml</code> to work with <strong>Hugo Pipes</strong>. We have now added a <code>Suffixes</code> field on the MIME type definition in Hugo, which is a list of one or more filename suffixes the MIME type is identified with. If you need to add a custom MIME type definition, this means that you also need to specify the full MIME type as the key, e.g. <code>image/svg+xml</code>.</p>
+
+<p>Hugo now has:</p>
+
+<ul>
+<li>27120+ <a href="https://github.com/gohugoio/hugo/stargazers">stars</a></li>
+<li>443+ <a href="https://github.com/gohugoio/hugo/graphs/contributors">contributors</a></li>
+<li>239+ <a href="http://themes.gohugo.io/">themes</a></li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<ul>
+<li><code>MediaType.Suffix</code> is deprecated and replaced with a plural version,  <code>MediaType.Suffixes</code>, with a more specific definition. You will get a detailed WARNING in the console if you need to do anything.</li>
+</ul>
+
+<h2 id="enhancements">Enhancements</h2>
+
+<ul>
+<li>Allow multiple file suffixes per media type <a href="https://github.com/gohugoio/hugo/commit/b874a1ba7ab8394dc741c8c70303a30a35b63e43">b874a1ba</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4920">#4920</a></li>
+<li>Clean up the in-memory Resource reader usage <a href="https://github.com/gohugoio/hugo/commit/47d38628ec0f4e72ff17661f13456b2a1511fe13">47d38628</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4936">#4936</a></li>
+<li>Move opening of the transformed resources after cache check <a href="https://github.com/gohugoio/hugo/commit/0024dcfe3e016c67046de06d1dac5e7f5235f9e1">0024dcfe</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Improve type support in <code>resources.Concat</code> <a href="https://github.com/gohugoio/hugo/commit/306573def0e20ec16ee5c447981cc09ed8bb7ec7">306573de</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4934">#4934</a></li>
+<li>Flush <code>partialCached</code> cache on rebuilds <a href="https://github.com/gohugoio/hugo/commit/6b6dcb44a014699c289bf32fe57d4c4216777be0">6b6dcb44</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4931">#4931</a></li>
+<li>Include the transformation step in the error message <a href="https://github.com/gohugoio/hugo/commit/d96f2a460f58e91d8f6253a489d4879acfec6916">d96f2a46</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4924">#4924</a></li>
+<li>Exclude *.svg from CRLF/LF conversion <a href="https://github.com/gohugoio/hugo/commit/9c1e82085eb07d5b4dcdacbe82d5bafd26e08631">9c1e8208</a> <a href="https://github.com/anthonyfok">@anthonyfok</a></li>
+</ul>
+
+<h2 id="fixes">Fixes</h2>
+
+<ul>
+<li>Fix <code>resources.Concat</code> for transformed resources <a href="https://github.com/gohugoio/hugo/commit/beec1fc98e5d37bba742d6bc2a0ff7c344b469f8">beec1fc9</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4936">#4936</a></li>
+<li>Fix static filesystem for themed multihost sites <a href="https://github.com/gohugoio/hugo/commit/80c8f3b81a9849080e64bf877288ede28d960d3f">80c8f3b8</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4929">#4929</a></li>
+<li>Set permission of embedded templates to 0644 <a href="https://github.com/gohugoio/hugo/commit/2b73e89d6d2822e86360a6c92c87f539677c119b">2b73e89d</a> <a href="https://github.com/anthonyfok">@anthonyfok</a></li>
+</ul>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/news/0.43-relnotes/">And Now: Hugo Pipes!</a></span>
+  <span class="nav-next"><a href="/posts/news/0.45-relnotes/">Hugo 0.45: Revival of ref, relref and GetPage</a> &rarr;</span>
+</nav>
+
+
+
+<section class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var disqus_js = '//foodsdata.disqus.com/embed.js';
+    var d = document, s = d.createElement('script');
+    s.src = disqus_js; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://foodsdata.github.io">Foodsdata</a> 2019</div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

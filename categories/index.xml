@@ -1,21 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Beautiful Hugo</title>
+    <title>Categories on Hugo Ivy</title>
     <link>https://foodsdata.github.io/categories/</link>
-    <description>Recent content in Categories on Beautiful Hugo</description>
+    <description>Recent content in Categories on Hugo Ivy</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <language>en-us</language>
     
 	<atom:link href="https://foodsdata.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Example</title>
+      <link>https://foodsdata.github.io/categories/example/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://foodsdata.github.io/categories/example/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://foodsdata.github.io/categories/hugo/</link>
+      <pubDate>Sun, 14 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://foodsdata.github.io/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Releases</title>
+      <link>https://foodsdata.github.io/categories/releases/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://foodsdata.github.io/categories/releases/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uncategorized</title>
+      <link>https://foodsdata.github.io/categories/uncategorized/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://foodsdata.github.io/categories/uncategorized/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://foodsdata.github.io/categories/blog/</link>
+      <pubDate>Mon, 24 Jul 2017 18:36:00 +0200</pubDate>
+      
+      <guid>https://foodsdata.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>思考感悟</title>
       <link>https://foodsdata.github.io/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
       <pubDate>Sat, 20 Feb 2016 15:34:05 +0800</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      
       <guid>https://foodsdata.github.io/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</guid>
       <description></description>
     </item>

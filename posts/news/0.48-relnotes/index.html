@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>This One Goes to 11! - Hugo Ivy</title>
+    <meta property="og:title" content="This One Goes to 11! - Hugo Ivy">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="With Go 1.11, Hugo finally gets support for variable overwrites in templates!">
+      <meta property="og:description" content="With Go 1.11, Hugo finally gets support for variable overwrites in templates!">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Hugo Ivy</a></h1>
+
+<p class="tagline">A Hugo theme ported from the static site generator Ivy.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">Home</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  <li><a href="/categories/">Categories</a></li>
+  
+  <li><a href="/tags/">Tags</a></li>
+  
+  <li><a href="/index.xml">Subscribe</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>This One Goes to 11!</h1>
+
+<h3>
+  2018-08-29</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>Hugo <code>0.48</code> is built with the brand new Go 1.11. On the technical side this means that Hugo now uses <a href="https://github.com/golang/go/wiki/Modules">Go Modules</a> for the build. The big new functional thing in Go 1.11 for Hugo is added support for <a href="https://github.com/golang/go/issues/10608">variable overwrites</a>. This means that you can now do this and get the expected result:</p>
+
+<pre><code class="language-go-html-template">{{ $var := &quot;Hugo Page&quot; }}
+{{ if .IsHome }}
+    {{ $var = &quot;Hugo Home&quot; }}
+{{ end }}
+Var is {{ $var }}
+</code></pre>
+
+<p>The above may look obvious, but has not been possible until now. In Hugo we have had <code>.Scratch</code> as a workaround for this, but Go 1.11 will help clean up a lot of templates.</p>
+
+<p>This release represents <strong>23 contributions by 5 contributors</strong> to the main Hugo code base. <a href="https://github.com/bep">@bep</a> leads the Hugo development with a significant amount of contributions, but also a big shoutout to <a href="https://github.com/anthonyfok">@anthonyfok</a>, <a href="https://github.com/vsopvsop">@vsopvsop</a>, and <a href="https://github.com/moorereason">@moorereason</a> for their ongoing contributions. And a big thanks to <a href="https://github.com/digitalcraftsman">@digitalcraftsman</a> for his relentless work on keeping the themes site in pristine condition and to <a href="https://github.com/kaushalmodi">@kaushalmodi</a> for his great work on the documentation site.</p>
+
+<p>Many have also been busy writing and fixing the documentation in <a href="https://github.com/gohugoio/hugoDocs">hugoDocs</a>,
+which has received <strong>15 contributions by 12 contributors</strong>. A special thanks to <a href="https://github.com/bep">@bep</a>, <a href="https://github.com/kaushalmodi">@kaushalmodi</a>, <a href="https://github.com/regisphilibert">@regisphilibert</a>, and <a href="https://github.com/anthonyfok">@anthonyfok</a> for their work on the documentation site.</p>
+
+<p>Hugo now has:</p>
+
+<ul>
+<li>28275+ <a href="https://github.com/gohugoio/hugo/stargazers">stars</a></li>
+<li>441+ <a href="https://github.com/gohugoio/hugo/graphs/contributors">contributors</a></li>
+<li>252+ <a href="http://themes.gohugo.io/">themes</a></li>
+</ul>
+
+<h2 id="enhancements">Enhancements</h2>
+
+<ul>
+<li>Add a test for template variable overwrite <a href="https://github.com/gohugoio/hugo/commit/0c8a4154838e32a33d34202fd4fa0187aa502190">0c8a4154</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Include language code in REF_NOT_FOUND errors <a href="https://github.com/gohugoio/hugo/commit/94d0e79d33994b9a9d26a4d020500acdcc71e58c">94d0e79d</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5110">#5110</a></li>
+<li>Improve minifier MIME type resolution <a href="https://github.com/gohugoio/hugo/commit/ebb56e8bdbfaf4f955326017e40b2805850871e9">ebb56e8b</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5093">#5093</a></li>
+<li>Update to Go 1.11 <a href="https://github.com/gohugoio/hugo/commit/6b9934a26615ea614b1774770532cae9762a58d3">6b9934a2</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Set GO111MODULE=on for mage install <a href="https://github.com/gohugoio/hugo/commit/c7f057797ca7bfc781d5a2bbf181bb52360f160f">c7f05779</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Add instruction to install PostCSS when missing <a href="https://github.com/gohugoio/hugo/commit/08d14113b60ff70ffe922e8098e289b099a70e0f">08d14113</a> <a href="https://github.com/anthonyfok">@anthonyfok</a> <a href="https://github.com/gohugoio/hugo/issues/5111">#5111</a></li>
+<li>Update snapcraft build config to Go 1.11 <a href="https://github.com/gohugoio/hugo/commit/94d6d6780fac78e9ed5ed58ecdb9821ad8f0f27c">94d6d678</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Use Go 1.11 modules with Mage <a href="https://github.com/gohugoio/hugo/commit/45c9c45d1d0d99443fa6bb524a1265fa9ba95e0e">45c9c45d</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Add go.mod <a href="https://github.com/gohugoio/hugo/commit/fce32c07fb80e9929bc2660cf1e681e93009d24b">fce32c07</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Update Travis to Go 1.11 and Go 1.10.4 <a href="https://github.com/gohugoio/hugo/commit/d32ff16fd61f55874e81d73759afa099b8bdcb57">d32ff16f</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5115">#5115</a></li>
+<li>Skip installing postcss due to failure on build server <a href="https://github.com/gohugoio/hugo/commit/66f688f7120560ca787c1a23e3e7fbc3aa617956">66f688f7</a> <a href="https://github.com/anthonyfok">@anthonyfok</a></li>
+</ul>
+
+<h2 id="fixes">Fixes</h2>
+
+<ul>
+<li>Keep end tags <a href="https://github.com/gohugoio/hugo/commit/e6eda2a370aa1184e0afaf12e95dbd6f8b63ace5">e6eda2a3</a> <a href="https://github.com/vsopvsop">@vsopvsop</a></li>
+<li>Fix permissions when creating new folders <a href="https://github.com/gohugoio/hugo/commit/f4675fa0f0fae2358adfaea49e8da824ee094495">f4675fa0</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5128">#5128</a></li>
+<li>Fix handling of taxonomy terms containing slashes <a href="https://github.com/gohugoio/hugo/commit/fff132537b4094221f4f099e2251f3cda613060f">fff13253</a> <a href="https://github.com/moorereason">@moorereason</a> <a href="https://github.com/gohugoio/hugo/issues/4090">#4090</a></li>
+<li>Fix build on armv7 <a href="https://github.com/gohugoio/hugo/commit/8999de193c18b7aa07b44e5b7d9f443a8572e117">8999de19</a> <a href="https://github.com/caarlos0">@caarlos0</a> <a href="https://github.com/gohugoio/hugo/issues/5101">#5101</a></li>
+</ul>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/news/0.47.1-relnotes/">Two Bug Fixes</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+<section class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var disqus_js = '//foodsdata.disqus.com/embed.js';
+    var d = document, s = d.createElement('script');
+    s.src = disqus_js; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://foodsdata.github.io">Foodsdata</a> 2019</div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

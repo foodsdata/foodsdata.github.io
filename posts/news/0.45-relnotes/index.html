@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Hugo 0.45: Revival of ref, relref and GetPage - Hugo Ivy</title>
+    <meta property="og:title" content="Hugo 0.45: Revival of ref, relref and GetPage - Hugo Ivy">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="Hugo 0.45 adds relative page lookups, language support in ref/relref and several Hugo Pipes improvements.">
+      <meta property="og:description" content="Hugo 0.45 adds relative page lookups, language support in ref/relref and several Hugo Pipes improvements.">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Hugo Ivy</a></h1>
+
+<p class="tagline">A Hugo theme ported from the static site generator Ivy.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">Home</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  <li><a href="/categories/">Categories</a></li>
+  
+  <li><a href="/tags/">Tags</a></li>
+  
+  <li><a href="/index.xml">Subscribe</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Hugo 0.45: Revival of ref, relref and GetPage</h1>
+
+<h3>
+  2018-07-22</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>Hugo <code>0.45</code> is the <strong>revival of ref, relref and GetPage</strong>. <a href="https://github.com/vassudanagunta">@vassudanagunta</a> and <a href="https://github.com/bep">@bep</a> have done some great work improving the API and implementation for the helper functions used to <strong>get one page</strong>. Before this release, the API was a little bit clumsy and the result potentially ambiguous in some situations.</p>
+
+<p>Now you can simply do:</p>
+
+<pre><code class="language-go-html-template">{{ with .Site.GetPage &quot;/blog/my-post.md&quot; }}{{ .Title }}{{ end }}
+</code></pre>
+
+<p>Or to get a section page:</p>
+
+<pre><code class="language-go-html-template">{{ with .Site.GetPage &quot;/blog&quot; }}{{ .Title }}{{ end }}
+</code></pre>
+
+<p>We have also added a <code>.GetPage</code> method on <code>Page</code> and added support for page-relative linking. This means that the leading slash (<code>/</code>) now has a meaning. For <code>.Site.GetPage</code>, all lookups will start at the content root. But for lookups with a <code>Page</code> context, paths without a leading slash will be treated as relative to the page.</p>
+
+<p>This means that the following example will find the page in the current section:</p>
+
+<pre><code class="language-go-html-template">{{&lt; ref &quot;my-post.md&quot; &gt;}}
+</code></pre>
+
+<p>You can also use the <code>..</code> to refer to a page one level up etc.:</p>
+
+<pre><code class="language-go-html-template">{{&lt; ref &quot;../my-post.md&quot; &gt;}}
+</code></pre>
+
+<p>We have now also added language support to <code>ref</code> and <code>relref</code>, so you can link to a page in another language:</p>
+
+<pre><code class="language-go-html-template">{{&lt; relref path=&quot;document.md&quot; lang=&quot;jp&quot; &gt;}}
+</code></pre>
+
+<p>To link to a given Output Format of a document, you can use this syntax:</p>
+
+<pre><code class="language-go-html-template">{{&lt; relref path=&quot;document.md&quot; outputFormat=&quot;rss&quot; &gt;}}
+</code></pre>
+
+<p>To make working with these reflinks on bigger sites easier to work with, we have also improved the error logging, and added two new configuration settings:</p>
+
+<ul>
+<li>refLinksErrorLevel: ERROR (default, will fail the build when a reflink cannot be resolved) or WARNING.</li>
+<li>refLinksNotFoundURL: Set this to an URL placeholder used when no reference could be resolved.</li>
+</ul>
+
+<p>Visit the <a href="https://gohugo.io/content-management/cross-references">Hugo Docs</a> for more information.</p>
+
+<p>We have also done some important improvements and fixes in <strong>Hugo Pipes</strong> in this release: SCSS source maps on Windows now works, we now support project-local <code>PostCSS</code> installation, and we have added <code>IncludePaths</code> to <code>SCSS</code> options, making it possible to include, say, a path below <code>node_modules</code> in the SASS/SCSS build.</p>
+
+<p>This release represents <strong>31 contributions by 4 contributors</strong> to the main Hugo code base.
+<a href="https://github.com/bep">@bep</a> leads the Hugo development with a significant amount of contributions, but also a big shoutout to <a href="https://github.com/vassudanagunta">@vassudanagunta</a>, <a href="https://github.com/hairmare">@hairmare</a>, and <a href="https://github.com/garrmcnu">@garrmcnu</a> for their ongoing contributions.
+And a big thanks to <a href="https://github.com/digitalcraftsman">@digitalcraftsman</a> for his relentless work on keeping the themes site in pristine condition and to <a href="https://github.com/kaushalmodi">@kaushalmodi</a> for his great work on the documentation site.</p>
+
+<p>Many have also been busy writing and fixing the documentation in <a href="https://github.com/gohugoio/hugoDocs">hugoDocs</a>,
+which has received <strong>10 contributions by 8 contributors</strong>. A special thanks to <a href="https://github.com/kaushalmodi">@kaushalmodi</a>, <a href="https://github.com/Hanzei">@Hanzei</a>, <a href="https://github.com/KurtTrowbridge">@KurtTrowbridge</a>, and <a href="https://github.com/regisphilibert">@regisphilibert</a> for their work on the documentation site.</p>
+
+<p>Hugo now has:</p>
+
+<ul>
+<li>27334+ <a href="https://github.com/gohugoio/hugo/stargazers">stars</a></li>
+<li>443+ <a href="https://github.com/gohugoio/hugo/graphs/contributors">contributors</a></li>
+<li>238+ <a href="http://themes.gohugo.io/">themes</a></li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<ul>
+<li><code>.Site.GetPage</code> with more than 2 arguments will not work anymore. This means that <code>{{ .Site.GetPage &quot;page&quot; &quot;blog&quot; &quot;my-post.md&quot; }}</code> will fail. <code>{{ .Site.GetPage &quot;page&quot; &quot;blog/my-post.md&quot; }}</code> will work, but we recommend you use the simpler <code>{{ .Site.GetPage &quot;/blog/my-post.md&quot; }}</code></li>
+<li>Relative paths in <code>relref</code> or <code>ref</code> that finds its match not relative to the page itself will work, but we now print a warning saying that you should correct it to an absolute path. E.g. <code>{{&lt; ref &quot;blog/my-post.md&quot; &gt;}}</code> =&gt; <code>{{&lt; ref &quot;/blog/my-post.md&quot; &gt;}}</code>.</li>
+</ul>
+
+<h2 id="enhancements">Enhancements</h2>
+
+<ul>
+<li>Print a WARNING about relative non-relative ref/relref matches <a href="https://github.com/gohugoio/hugo/commit/a451c49fde1da6e2cc436a2b7d383ee772b1f893">a451c49f</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4973">#4973</a></li>
+<li>Allow untyped nil to be merged in lang.Merge <a href="https://github.com/gohugoio/hugo/commit/ff16c42ed0965e1c8acf6e6a6dcda3ea50c107f2">ff16c42e</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4977">#4977</a></li>
+<li>Get rid of the utils package <a href="https://github.com/gohugoio/hugo/commit/062510cf1f7b79aed2efe88c5b9340d009bdec0e">062510cf</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Update hugo_windows.go <a href="https://github.com/gohugoio/hugo/commit/4e1d0cd9f1d43d133d669a019a84117cadd41955">4e1d0cd9</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Add IncludePaths config option <a href="https://github.com/gohugoio/hugo/commit/166483fe1227b0c59c6b4d88cfdfaf7d7b0d79c5">166483fe</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4921">#4921</a></li>
+<li>Increase refLinker test coverage <a href="https://github.com/gohugoio/hugo/commit/8278384b9680cfdcecef9c668638ad483012857f">8278384b</a> <a href="https://github.com/vassudanagunta">@vassudanagunta</a></li>
+<li>Add test coverage for recent ref overhaul <a href="https://github.com/gohugoio/hugo/commit/2bac3715448e90e197ada7cc73c87f696c19def6">2bac3715</a> <a href="https://github.com/vassudanagunta">@vassudanagunta</a> <a href="https://github.com/gohugoio/hugo/issues/4969">#4969</a></li>
+<li>Update ref, relref, GetPage docs <a href="https://github.com/gohugoio/hugo/commit/1eb8b36b3802e72bc2c16965461ef1899bb073b3">1eb8b36b</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Document refLinksErrorLevel and refLinksNotFoundURL <a href="https://github.com/gohugoio/hugo/commit/00c74ee7ffae71fd5f47d555160354a775e26151">00c74ee7</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4964">#4964</a></li>
+<li>Add configurable ref/relref error handling and notFoundURL <a href="https://github.com/gohugoio/hugo/commit/e25aa655f4227ac064be5fe770d517a80acd46b2">e25aa655</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4964">#4964</a></li>
+<li>Try node_modules/postcss-cli/bin/postcss first <a href="https://github.com/gohugoio/hugo/commit/ebe4d39f175f73e4f130972cb3d74ef0af5d5761">ebe4d39f</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4952">#4952</a></li>
+<li>Add optional lang as argument to rel/relref <a href="https://github.com/gohugoio/hugo/commit/d741064bebe2f4663a7ba12556dccc3dffe08629">d741064b</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4956">#4956</a></li>
+<li>Simplify .Site.GetPage etc. <a href="https://github.com/gohugoio/hugo/commit/3eb313fef495a39731dafa6bddbf77760090230d">3eb313fe</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4147">#4147</a><a href="https://github.com/gohugoio/hugo/issues/4727">#4727</a><a href="https://github.com/gohugoio/hugo/issues/4728">#4728</a><a href="https://github.com/gohugoio/hugo/issues/4728">#4728</a><a href="https://github.com/gohugoio/hugo/issues/4726">#4726</a><a href="https://github.com/gohugoio/hugo/issues/4652">#4652</a></li>
+<li>Unify page lookups <a href="https://github.com/gohugoio/hugo/commit/b93417aa1d3d38a9e56bad25937e0e638a113faf">b93417aa</a> <a href="https://github.com/vassudanagunta">@vassudanagunta</a> <a href="https://github.com/gohugoio/hugo/issues/4147">#4147</a><a href="https://github.com/gohugoio/hugo/issues/4727">#4727</a><a href="https://github.com/gohugoio/hugo/issues/4728">#4728</a><a href="https://github.com/gohugoio/hugo/issues/4728">#4728</a><a href="https://github.com/gohugoio/hugo/issues/4726">#4726</a><a href="https://github.com/gohugoio/hugo/issues/4652">#4652</a></li>
+<li>Improve error message <a href="https://github.com/gohugoio/hugo/commit/4c240800a4275244c9e0847cd6707383180f1ac3">4c240800</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Remove unused code <a href="https://github.com/gohugoio/hugo/commit/2f2bc7ff70b90fb11580cc092ef3883bf68d8ad7">2f2bc7ff</a> <a href="https://github.com/bep">@bep</a></li>
+</ul>
+
+<h2 id="fixes">Fixes</h2>
+
+<ul>
+<li>Avoid server panic on TOML mistake in i18n <a href="https://github.com/gohugoio/hugo/commit/75acff5f20d0d41ffa1ae20402001c7a82f077cb">75acff5f</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4942">#4942</a></li>
+<li>Only set &lsquo;allThemes&rsquo; if there are themes in the config file <a href="https://github.com/gohugoio/hugo/commit/38204c4ab6fa2aa2ab8bd06ddb3e07b66e5f9646">38204c4a</a> <a href="https://github.com/garrmcnu">@garrmcnu</a> <a href="https://github.com/gohugoio/hugo/issues/4851">#4851</a></li>
+<li>Fix potential server panic with drafts/future enabled <a href="https://github.com/gohugoio/hugo/commit/1ab4658c0d5ea2927f04bd748206e5b139a6326e">1ab4658c</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4965">#4965</a></li>
+<li>Mark shortcode changes as content changes in server mode <a href="https://github.com/gohugoio/hugo/commit/12679b408362a93a3c6159588d6291a3b7ed5548">12679b40</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4965">#4965</a></li>
+<li>Fix source maps on Windows <a href="https://github.com/gohugoio/hugo/commit/f01505c910a325acc18742ac6b3637aa01975e37">f01505c9</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4968">#4968</a></li>
+<li>Fix typo-logic bug in GetPage <a href="https://github.com/gohugoio/hugo/commit/b56d9a1294e692d096bff442e0b1fec61a8c2b0f">b56d9a12</a> <a href="https://github.com/vassudanagunta">@vassudanagunta</a></li>
+<li>Enable test case fixed by commit 501543d4 <a href="https://github.com/gohugoio/hugo/commit/d6fde8fa131f3852fa98a8ec5c360e736486cf54">d6fde8fa</a> <a href="https://github.com/vassudanagunta">@vassudanagunta</a></li>
+<li>Fix theme config for Work Fs <a href="https://github.com/gohugoio/hugo/commit/5c9d5413a4e2cc8d44a8b2d7dff04e6523ba2a29">5c9d5413</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/4951">#4951</a></li>
+<li>Fix addkit link to account for i18n <a href="https://github.com/gohugoio/hugo/commit/fd1f4a7860c4b989865b47c727239cf924a52fa4">fd1f4a78</a> <a href="https://github.com/hairmare">@hairmare</a></li>
+</ul>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/news/0.44-relnotes/">Hugo 0.44: Friday the 13th Edition</a></span>
+  <span class="nav-next"><a href="/posts/news/0.45.1-relnotes/">Hugo 0.45.1: Two Bug Fixes</a> &rarr;</span>
+</nav>
+
+
+
+<section class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var disqus_js = '//foodsdata.disqus.com/embed.js';
+    var d = document, s = d.createElement('script');
+    s.src = disqus_js; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://foodsdata.github.io">Foodsdata</a> 2019</div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

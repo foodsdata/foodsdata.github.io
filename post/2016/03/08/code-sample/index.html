@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Code Sample - Using Hugo or Pygments  - Hugo Ivy</title>
+    <meta property="og:title" content="Code Sample - Hugo Ivy">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="The following are two code samples using syntax highlighting.
+The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not &amp;hellip;">
+      <meta property="og:description" content="The following are two code samples using syntax highlighting.
+The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">Hugo Ivy</a></h1>
+
+<p class="tagline">A Hugo theme ported from the static site generator Ivy.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">Home</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  <li><a href="/categories/">Categories</a></li>
+  
+  <li><a href="/tags/">Tags</a></li>
+  
+  <li><a href="/index.xml">Subscribe</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Code Sample</h1>
+<h1><span class="subtitle">Using Hugo or Pygments</span></h1>
+<h3>
+  2016-03-08</h3>
+<hr>
+
+
+      </header>
+
+
+
+<p>The following are two code samples using syntax highlighting.</p>
+
+<p>The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not require any special installation.</p>
+
+<pre><code class="language-javascript">    var num1, num2, sum
+    num1 = prompt(&quot;Enter first number&quot;)
+    num2 = prompt(&quot;Enter second number&quot;)
+    sum = parseInt(num1) + parseInt(num2) // &quot;+&quot; means &quot;add&quot;
+    alert(&quot;Sum = &quot; + sum)  // &quot;+&quot; means combine into a string
+</code></pre>
+
+<p>The following is a code sample using the &ldquo;highlight&rdquo; shortcode provided in Hugo. This is server side highlighting and requires Python and Pygments to be installed.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num1</span>, <span style="color:#a6e22e">num2</span>, <span style="color:#a6e22e">sum</span>
+    <span style="color:#a6e22e">num1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prompt</span>(<span style="color:#e6db74">&#34;Enter first number&#34;</span>)
+    <span style="color:#a6e22e">num2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prompt</span>(<span style="color:#e6db74">&#34;Enter second number&#34;</span>)
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">num1</span>) <span style="color:#f92672">+</span> parseInt(<span style="color:#a6e22e">num2</span>) <span style="color:#75715e">// &#34;+&#34; means &#34;add&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Sum = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">sum</span>)  <span style="color:#75715e">// &#34;+&#34; means combine into a string
+</span></code></pre></div>
+
+<p>And here is the same code with line numbers:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1</span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num1</span>, <span style="color:#a6e22e">num2</span>, <span style="color:#a6e22e">sum</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2</span>    <span style="color:#a6e22e">num1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prompt</span>(<span style="color:#e6db74">&#34;Enter first number&#34;</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3</span>    <span style="color:#a6e22e">num2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prompt</span>(<span style="color:#e6db74">&#34;Enter second number&#34;</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4</span>    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">num1</span>) <span style="color:#f92672">+</span> parseInt(<span style="color:#a6e22e">num2</span>) <span style="color:#75715e">// &#34;+&#34; means &#34;add&#34;
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Sum = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">sum</span>)  <span style="color:#75715e">// &#34;+&#34; means combine into a string
+</span></code></pre></div>
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/post/2016/02/20/hello-hugo/">hello hugo</a></span>
+  <span class="nav-next"><a href="/post/2017/03/05/math-sample/">Math Sample</a> &rarr;</span>
+</nav>
+
+
+
+<section class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var disqus_js = '//foodsdata.disqus.com/embed.js';
+    var d = document, s = d.createElement('script');
+    s.src = disqus_js; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://foodsdata.github.io">Foodsdata</a> 2019</div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

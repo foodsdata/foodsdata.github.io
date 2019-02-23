@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Output Minification, Live-Reload Fixes and More - Hugo Ivy</title>
+    <meta property="og:title" content="Output Minification, Live-Reload Fixes and More - Hugo Ivy">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="Hugo 0.47: Adds minification of rendered output, but is mostly a massive bug fix release.">
+      <meta property="og:description" content="Hugo 0.47: Adds minification of rendered output, but is mostly a massive bug fix release.">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Hugo Ivy</a></h1>
+
+<p class="tagline">A Hugo theme ported from the static site generator Ivy.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">Home</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  <li><a href="/categories/">Categories</a></li>
+  
+  <li><a href="/tags/">Tags</a></li>
+  
+  <li><a href="/index.xml">Subscribe</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Output Minification, Live-Reload Fixes and More</h1>
+
+<h3>
+  2018-08-17</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>Hugo <code>0.47</code> is named <strong>Hugo Reloaded</strong>. It adds minification support for the final rendered output (run <code>hugo --minify</code>), but it is mostly a bug fix release. And most notably, it fixes a set of issues with live-reloading/partial rebuilds when running <code>hugo server</code>. Working with bundles should now be a more pleasant experience, to pick one example.</p>
+
+<p>This release represents <strong>35 contributions by 6 contributors</strong> to the main Hugo code base.
+<a href="https://github.com/bep">@bep</a> leads the Hugo development with a significant amount of contributions, but also a big shoutout to <a href="https://github.com/satotake">@satotake</a>, <a href="https://github.com/anthonyfok">@anthonyfok</a>, and <a href="https://github.com/coliff">@coliff</a> for their ongoing contributions.</p>
+
+<p>And a big thanks to <a href="https://github.com/digitalcraftsman">@digitalcraftsman</a> and <a href="https://github.com/onedrawingperday">@onedrawingperday</a>  for their relentless work on keeping the themes site in pristine condition and to <a href="https://github.com/kaushalmodi">@kaushalmodi</a> for his great work on the documentation site.</p>
+
+<p>Many have also been busy writing and fixing the documentation in <a href="https://github.com/gohugoio/hugoDocs">hugoDocs</a>,
+which has received <strong>21 contributions by 10 contributors</strong>. A special thanks to <a href="https://github.com/bep">@bep</a>, <a href="https://github.com/aapeliv">@aapeliv</a>, <a href="https://github.com/regisphilibert">@regisphilibert</a>, and <a href="https://github.com/brentybh">@brentybh</a> for their work on the documentation site.</p>
+
+<p>Hugo now has:</p>
+
+<ul>
+<li>27980+ <a href="https://github.com/gohugoio/hugo/stargazers">stars</a></li>
+<li>442+ <a href="https://github.com/gohugoio/hugo/graphs/contributors">contributors</a></li>
+<li>251+ <a href="http://themes.gohugo.io/">themes</a></li>
+</ul>
+
+<h2 id="enhancements">Enhancements</h2>
+
+<h3 id="templates">Templates</h3>
+
+<ul>
+<li>Suppress blank lines from opengraph internal template <a href="https://github.com/gohugoio/hugo/commit/c09ee78fd235599d3fb794110cd75c024d80cfca">c09ee78f</a> <a href="https://github.com/anthonyfok">@anthonyfok</a></li>
+<li>Add MIME type to embedded JS <a href="https://github.com/gohugoio/hugo/commit/755d1ffe7a22d8ad83485240ff78cf25d501602f">755d1ffe</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5042">#5042</a></li>
+<li>Add <code>os.Stat</code> template function <a href="https://github.com/gohugoio/hugo/commit/d71120852a8e14d0ea4d24de269fce041ef7b666">d7112085</a> <a href="https://github.com/satotake">@satotake</a></li>
+</ul>
+
+<h3 id="output">Output</h3>
+
+<ul>
+<li>Add support for minification of final output <a href="https://github.com/gohugoio/hugo/commit/789ef8c639e4621abd36da530bcb5942ac9297da">789ef8c6</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/1251">#1251</a></li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+<li>Regenerate CLI docs <a href="https://github.com/gohugoio/hugo/commit/4a16b5f4b0adbb31fee611c378de9d5526de2f86">4a16b5f4</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Include theme name in version mismatch error <a href="https://github.com/gohugoio/hugo/commit/e5052f4e09b6df590cddf2f8bc2c834fd3af3082">e5052f4e</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5044">#5044</a></li>
+<li>Make the JS minifier matcher less specific <a href="https://github.com/gohugoio/hugo/commit/c81fbf4625ae7cc7dd3a7a526331ddfdf5237cc6">c81fbf46</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5073">#5073</a></li>
+<li>Close file when done <a href="https://github.com/gohugoio/hugo/commit/f6ae436c5878bafeafa0bb2646a2c9b32c9b4380">f6ae436c</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5062">#5062</a></li>
+<li>https links to 3rd party sites <a href="https://github.com/gohugoio/hugo/commit/c2a6741394bc609a663522b245d3d75f0ad17da4">c2a67413</a> <a href="https://github.com/coliff">@coliff</a></li>
+<li>Update alias.go <a href="https://github.com/gohugoio/hugo/commit/06bd0136419ebd6727635716c7023494cc5a8257">06bd0136</a> <a href="https://github.com/coliff">@coliff</a></li>
+<li>Remove test debug <a href="https://github.com/gohugoio/hugo/commit/fb3cb05cc3dfc50370449f622fb0130ba7e0ced2">fb3cb05c</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Update dependencies <a href="https://github.com/gohugoio/hugo/commit/d07882dfb76a65cce79aaa6f27df71279cd30600">d07882df</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Update Chroma <a href="https://github.com/gohugoio/hugo/commit/7f5356717d14079432365974e1424fc4ff5987c9">7f535671</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5025">#5025</a></li>
+<li>Remove alias of os.Stat <a href="https://github.com/gohugoio/hugo/commit/71931b30b1813b146aaa60f5cdab16c0f9ebebdb">71931b30</a> <a href="https://github.com/satotake">@satotake</a></li>
+<li>Renmae FileStat Stat <a href="https://github.com/gohugoio/hugo/commit/d40116e5f941e4734ed3bed69dce8ffe11fc76b2">d40116e5</a> <a href="https://github.com/satotake">@satotake</a></li>
+<li>Reduce allocation in the benchmark itself <a href="https://github.com/gohugoio/hugo/commit/a6b1eb1e9150aa5c1c86fe7424cc4167d6f59a5a">a6b1eb1e</a> <a href="https://github.com/bep">@bep</a></li>
+<li>Simplify the 0 transformer case <a href="https://github.com/gohugoio/hugo/commit/27110133ffca05feae2e11a9ff28a9a00f613350">27110133</a> <a href="https://github.com/bep">@bep</a></li>
+</ul>
+
+<h2 id="fixes">Fixes</h2>
+
+<h3 id="templates-1">Templates</h3>
+
+<ul>
+<li>Fix compiling Amber templates that import other templates <a href="https://github.com/gohugoio/hugo/commit/37438757788d279c839506d54f460b2ab37db164">37438757</a> <a href="https://github.com/Stebalien">@Stebalien</a></li>
+<li>Reimplement the &ldquo;.Params tolower&rdquo; template transformer <a href="https://github.com/gohugoio/hugo/commit/5c5384916e8f954f3ea66148ecceb3732584588e">5c538491</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5068">#5068</a></li>
+</ul>
+
+<h3 id="output-1">Output</h3>
+
+<ul>
+<li>Fix Resource output in multihost setups <a href="https://github.com/gohugoio/hugo/commit/78f8475a054a6277d37f13329afd240b00dc9408">78f8475a</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5058">#5058</a></li>
+</ul>
+
+<h3 id="core">Core</h3>
+
+<ul>
+<li>Force render of any changed page, even in Fast Render Mode <a href="https://github.com/gohugoio/hugo/commit/2247546017c00201d2ce1232dd5303295451f1cc">22475460</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5083">#5083</a></li>
+<li>Add configFile(s) back to the watch list after REMOVE event <a href="https://github.com/gohugoio/hugo/commit/abc54080ec8c43e8989c081d934b59f0c9570c0b">abc54080</a> <a href="https://github.com/anthonyfok">@anthonyfok</a> <a href="https://github.com/gohugoio/hugo/issues/4701">#4701</a></li>
+<li>Gracefully handle typos in server config when running the server <a href="https://github.com/gohugoio/hugo/commit/a655e00d702dbc20b3961b131b33ab21841b043d">a655e00d</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5081">#5081</a></li>
+<li>Fix shortcode output wrapped in p <a href="https://github.com/gohugoio/hugo/commit/78c99463fdd45c91af9933528d12d36a86dc6482">78c99463</a> <a href="https://github.com/gllera">@gllera</a> <a href="https://github.com/gohugoio/hugo/issues/1642">#1642</a></li>
+<li>Adjust tests for shortcode p-issue <a href="https://github.com/gohugoio/hugo/commit/baa62d0abbbf24a17d0aa800a4bb217f026c49ad">baa62d0a</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/1642">#1642</a></li>
+<li>Fix image cache-clearing for sub-languages <a href="https://github.com/gohugoio/hugo/commit/9d973004f5379cff2adda489566fe40683553c4c">9d973004</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5084">#5084</a></li>
+<li>Fix error when deleting a bundle in server mode <a href="https://github.com/gohugoio/hugo/commit/0a88741fe85f4f7aedc02ed748dfeb8ccc073dbf">0a88741f</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5077">#5077</a></li>
+<li>Fix Related when called from shortcode <a href="https://github.com/gohugoio/hugo/commit/0dd06bdac008aa81ec2e8f29ad8110dac0227011">0dd06bda</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5071">#5071</a></li>
+<li>Use the interface value when doing Related search <a href="https://github.com/gohugoio/hugo/commit/a6f199f7a640161333608b4a843d701f7e182829">a6f199f7</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5071">#5071</a></li>
+<li>Fix GitInfo when multiple content dirs <a href="https://github.com/gohugoio/hugo/commit/2182ecfd34a24521bf0e3c939627a55327eb1e19">2182ecfd</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5054">#5054</a></li>
+<li>Add multiple content dirs to GitInfo test site <a href="https://github.com/gohugoio/hugo/commit/e85833d868a902840c5ed1c90713256153b2548b">e85833d8</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5054">#5054</a></li>
+<li>Fix &ldquo;adding a bundle&rdquo; in server mode <a href="https://github.com/gohugoio/hugo/commit/d139a037d98e4b388687eecb7831758412247c58">d139a037</a> <a href="https://github.com/bep">@bep</a> <a href="https://github.com/gohugoio/hugo/issues/5075">#5075</a></li>
+<li>Fix typo <a href="https://github.com/gohugoio/hugo/commit/c362634b7d8802ea81b0b4341c800a9f78f7cd7c">c362634b</a> <a href="https://github.com/satotake">@satotake</a></li>
+</ul>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/news/0.46-relnotes/">The Summer of Hugo</a></span>
+  <span class="nav-next"><a href="/posts/news/0.47.1-relnotes/">Two Bug Fixes</a> &rarr;</span>
+</nav>
+
+
+
+<section class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var disqus_js = '//foodsdata.disqus.com/embed.js';
+    var d = document, s = d.createElement('script');
+    s.src = disqus_js; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://foodsdata.github.io">Foodsdata</a> 2019</div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+
